@@ -1,0 +1,29 @@
+[package]
+name = "horus-dev-relay"
+version = "0.2.0"
+edition = "2021"
+license = "MIT"
+description = "Local/dev HTTP mailbox + in-memory username registry for Horus protocol tests"
+repository = "https://github.com/horus-chat/horus-dev-relay"
+readme = "README.md"
+
+[lib]
+name = "horus_dev_relay"
+path = "src/lib.rs"
+
+[[bin]]
+name = "horus-dev-relay"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Clone https://github.com/horus-chat/horus-username-registry as a sibling; Rust crate lives in registry/
+horus-registry = { path = "../horus-username-registry/registry" }
+x25519-dalek = { version = "2", features = ["static_secrets"] }
+chacha20poly1305 = { version = "0.10", features = ["std"] }
+hkdf = "0.12"
+sha2 = "0.10"
+base64 = "0.22"
+rand = "0.8"
+mdns-sd = "0.11"
